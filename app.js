@@ -24,12 +24,34 @@ app.get('/greet', (req, res)=> {
 
 app.get('/math/:num1/:op/:num2', (req, res)=> {
     console.log( req.params )
+    let operation = req.params.op
+    let result = 0
 
-    let value1 = req.params.num1
-    let value2 = req.params.num2
-
-    result = value1 * value2
-
+    if (operation == 'plus')
+    {
+        result = req.params.num1 + req.params.num2
+    }
+    
+    else if (operation == 'minus') {
+        result = req.params.num1 - req.params.num2
+    }
+    
+    else if (operation == 'times') {
+        result = req.params.num1 * req.params.num2
+    }
+    
+    else if (operation == 'dividedby') {
+        result = req.params.num1 / req.params.num2
+    }
+    
+    else if (operation == 'tothepowerof') {
+        result = req.params.num1 * (req.params.num1 * (req.params.num2 - 1))
+    }
+    
+    else {
+        result = 'Invalid Operation'
+    }
+    
     res.send(`${result}`)
 })
 
