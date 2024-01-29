@@ -24,7 +24,13 @@ app.get('/greet', (req, res)=> {
 
 app.get('/math/:num1/:op/:num2', (req, res)=> {
     console.log( req.params )
-    res.send(`${req.params.num1}`)
+
+    let value1 = req.params.num1
+    let value2 = req.params.num2
+
+    result = value1 * value2
+
+    res.send(`${result}`)
 })
 
 app.get('/pandorasbox', (req, res)=> {
