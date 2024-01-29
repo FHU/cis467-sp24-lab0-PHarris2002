@@ -1,4 +1,6 @@
 const express = require('express')
+const facts = require('./facts.json')
+
 const app = express()
 
 const PORT = process.env.PORT || "3000"
@@ -58,8 +60,12 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
 app.get('/pandorasbox', (req, res)=> {
 
     // do the work
-    const message = "DAD JOKE"
+    // const message = "DAD JOKE"
 
-    res.render('pandorasbox', {title: "Pandora's Box", message} )
+    const length = facts.length
+    let randNumber = Math.floor((Math.random() * length))
+    const fact = facts[randNumber].fact
+
+    res.render('pandorasbox', {title: "Pandora's Box", message:fact} )
 
 })
