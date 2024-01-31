@@ -71,13 +71,24 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
 
 app.get('/pandorasbox', (req, res)=> {
 
-    // do the work
-    // const message = "DAD JOKE"
+    // Random Dad Jokes
 
+    fetch("https://icanhazdadjoke.com/", {
+        headers: {
+            "Accept": "application/json"
+        }
+        })
+
+        .then(res => res.json)
+        .then((data) => {
+            console.log(data)
+            res.render('pandorasbox', {title: "Pandora's Box", message: data.joke})
+        })
+
+    // Random Facts
     const length = facts.length
     let randNumber = Math.floor((Math.random() * length))
     const fact = facts[randNumber].fact
 
     res.render('pandorasbox', {title: "Pandora's Box", message:fact} )
-
 })
