@@ -13,7 +13,7 @@ app.listen(PORT, ()=> {
 
 app.get("/", (req, res) => {
 
-    res.send("Good Job!")
+    res.send("This is an introductory assignment for DevOps! Feel free to access any of the following directories: /greet, /math, /pandorasbox")
 
 })
 
@@ -38,32 +38,34 @@ app.get('/greet', (req, res)=> {
 app.get('/math/:num1/:op/:num2', (req, res)=> {
     console.log( req.params )
     let operation = req.params.op
+    let valueOne = parseInt(req.params.num1)
+    let valueTwo = parseInt(req.params.num2)
     let result = 0
 
-    if (operation == 'plus')
-    {
-        // when I use a plus sign, it combines the strings, so this is a substitute solution
-        result = req.params.num1 - (-req.params.num2)
-    }
+    switch (operation) {
+        case 'plus':
+            // when I use a plus sign, it combines the strings, so this is a substitute solution
+            result = valueOne + valueTwo
+            break;
     
-    else if (operation == 'minus') {
-        result = req.params.num1 - req.params.num2
-    }
+        case 'minus':
+            result = valueOne - valueTwo
+            break;
     
-    else if (operation == 'times') {
-        result = req.params.num1 * req.params.num2
-    }
+        case 'times':
+            result = valueOne * valueTwo
+            break;
     
-    else if (operation == 'dividedby') {
-        result = req.params.num1 / req.params.num2
-    }
+        case 'dividedby':
+            result = valueOne / valueTwo
+            break;
     
-    else if (operation == 'tothepowerof') {
-        result = req.params.num1 * (req.params.num1 * (req.params.num2 - 1))
-    }
+        case 'tothepowerof':
+            result = valueOne * (valueOne * (valueTwo - 1))
+            break;
     
-    else {
-        result = 'Invalid Operation'
+        default:
+            result = 'Invalid Operation'
     }
     
     res.send(`${result}`)
@@ -72,17 +74,15 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
 app.get('/pandorasbox', (req, res)=> {
 
     // Random Dad Jokes
-
-    fetch("https://icanhazdadjoke.com/", {
+    fetch("https://icanhazdadjoke.com/", { 
         headers: {
             "Accept": "application/json"
         }
         })
-
-        .then(res => res.json)
-        .then((data) => {
+        .then( res => res.json() )
+        .then( (data) => {
             console.log(data)
-            res.render('pandorasbox', {title: "Pandora's Box", message: data.joke})
+            res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
         })
 
     // Random Facts
