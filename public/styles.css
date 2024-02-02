@@ -1,26 +1,35 @@
 * {
     color: cadetblue;
     font-family:Arial, Helvetica, sans-serif;  
+    text-align: center;
 }
 
 h1 {
     padding: 20px;
-    text-align: center;
     border-bottom: solid 2px;
+}
+
+h3 {
+    font-size: 15px;
+    margin-bottom: 50px;
 }
 
 .navigation {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .navigation > a {
     padding: 20px;
     border: solid 1px;
     border-radius: 10px;
-    text-align: center;
     width: 100px;
     text-decoration: none;
+    transition: transform .2s;
+}
+
+.navigation > a:hover {
+    transform: scale(1.2);
 }
