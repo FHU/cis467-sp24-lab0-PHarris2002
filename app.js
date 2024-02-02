@@ -108,24 +108,24 @@ app.get('/pandorasbox/:path', (req, res)=> {
             break;
         
         default:
-            result = 'Invalid Path'}
+            res.render('pandorasbox', {title: "Invalid Path", message: 'Invalid Path'} )}
 
-    // // Random Dad Jokes
-    // fetch("https://icanhazdadjoke.com/", { 
-    //     headers: {
-    //         "Accept": "application/json"
-    //     }
-    //     })
-    //     .then( res => res.json() )
-    //     .then( (data) => {
-    //         console.log(data)
-    //         res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
-    //     })
+//     // // Random Dad Jokes
+//     // fetch("https://icanhazdadjoke.com/", { 
+//     //     headers: {
+//     //         "Accept": "application/json"
+//     //     }
+//     //     })
+//     //     .then( res => res.json() )
+//     //     .then( (data) => {
+//     //         console.log(data)
+//     //         res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
+//     //     })
 
-    // // Random Facts
-    // const length = facts.length
-    // let randNumber = Math.floor((Math.random() * length))
-    // const fact = facts[randNumber].fact
+//     // // Random Facts
+//     // const length = facts.length
+//     // let randNumber = Math.floor((Math.random() * length))
+//     // const fact = facts[randNumber].fact
 
-    // res.render('pandorasbox', {title: "Pandora's Box", message: fact} )
+//     // res.render('pandorasbox', {title: "Pandora's Box", message: fact} )
 })
