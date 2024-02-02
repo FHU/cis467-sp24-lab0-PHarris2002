@@ -15,7 +15,8 @@ app.listen(PORT, ()=> {
 
 app.get("/", (req, res) => {
 
-    res.send("This is an introductory assignment for DevOps! Feel free to access any of the following directories: /greet, /math, /pandorasbox")
+    res.render('main', {title: 'Lab0', message: 'This is an introductory assignment for DevOps! Feel free to access any of the following directories: /greet, /math, /pandorasbox.'} )
+    // res.send("This is an introductory assignment for DevOps! Feel free to access any of the following directories: /greet, /math, /pandorasbox")
 
 })
 
@@ -34,7 +35,8 @@ app.get('/greet', (req, res)=> {
     let ageA = currentYear - req.query.dob - 1
     let ageB = currentYear - req.query.dob
 
-    res.send(`Hello, ${capitalized}!\n You are ${ageA} or ${ageB} years old.`)
+    res.render('greet', {title: `Hello! ${capitalized}`, message: `Hello, ${capitalized}!\n You are ${ageA} or ${ageB} years old.`} )
+    // res.send(`Hello, ${capitalized}!\n You are ${ageA} or ${ageB} years old.`)
 })
 
 app.get('/math/:num1/:op/:num2', (req, res)=> {
@@ -69,8 +71,9 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
         default:
             result = 'Invalid Operation'
     }
-    
-    res.send(`${result}`)
+    res.render('math', {title: "URL Calculator", message: 'Result: ' + `${result}`} )
+    // res.send(`${result}`)
+
 })
 
 app.get('/pandorasbox', (req, res)=> {
